@@ -48,13 +48,13 @@ services:
     ports:
       - "5432:5432"
 
-  # redis:
-  #   image: redis:7-alpine
-  #   container_name: redis
-  #   networks:
-  #     - iot-net
-  #   ports:
-  #     - "6379:6379"
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    networks:
+      - iot-net
+    ports:
+      - "6379:6379"
 
   # 3. Processing (Spark)
   spark:
@@ -75,17 +75,17 @@ services:
       /app/spark_app.py
 
   # 4. Visualization (Streamlit)
-  # streamlit:
-  #   build:
-  #     context: ./streamlit
-  #   container_name: streamlit
-  #   networks:
-  #     - iot-net
-  #   depends_on:
-  #     - postgres
-  #     - redis
-  #   ports:
-  #     - "8501:8501"
+  streamlit:
+    build:
+      context: ./streamlit
+    container_name: streamlit
+    networks:
+      - iot-net
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8501:8501"
 
   # 5. Data Generation (Simulator)
   simulator:
