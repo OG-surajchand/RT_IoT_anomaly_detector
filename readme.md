@@ -54,7 +54,7 @@ Update the following in `spark_app.py`:
 ## Architecture
 
 ```
-IoT Sensors → Kafka → Spark Streaming → PostgreSQL
+IoT Sensors → Kafka → Spark Streaming → PostgreSQL/Redis
 ```
 
 Spark continuously reads from Kafka, detects anomalies in real-time, and writes results to the database.
